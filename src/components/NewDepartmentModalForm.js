@@ -37,7 +37,7 @@ const NewDepartmentModalForm = ({formNewDeptIsOpen, setFormNewDepartment}) => {
     return (
         <Modal isOpen={formNewDeptIsOpen} >
             <form onSubmit={(event, values) => {handleSubmitNewDepartment(event, values);}}>
-                <ModalHeader>Add new employee</ModalHeader>
+                <ModalHeader>Add new department</ModalHeader>
                 <ModalBody>
                     <input name='department_name' placeholder='Department name' onChange={handleDepartmentNameChange}></input>
                 </ModalBody>
