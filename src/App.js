@@ -6,6 +6,7 @@ import DepartmentList from './components/DepartmentList'
 
 import axios from 'axios';
 import { useEffect } from 'react';
+import { Button } from 'react-bootstrap';
 
 function App() {
   const getFileList = () => {
@@ -27,6 +28,8 @@ function App() {
 
   return (
     <div className="App">
+      <Button>Add department</Button>
+      <Button>Add employee</Button>
       <DepartmentList />
     </div>
   );
