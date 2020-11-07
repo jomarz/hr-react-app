@@ -27,7 +27,7 @@ const NewEmployeeModalForm = ({formNewDeptIsOpen, setFormNewDepartment}) => {
             } else {
                 console.log("There was a problem with the request.");
             }
-
+            setFormNewDepartment(false);
         });
     };
 
