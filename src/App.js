@@ -1,14 +1,20 @@
 import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
-//import './App.css';
+import { AvField } from 'availity-reactstrap-validation';
+import './assets/css/app.css';
 
 import DepartmentList from './components/DepartmentList'
 
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
+import AvForm from 'availity-reactstrap-validation/lib/AvForm';
+import NewEmployeeModalForm from './components/NewEmployeeModalForm';
 
 function App() {
+
+  const [formNewDeptIsOpen, setFormNewDepartment] = useState(false);
+
   const getFileList = () => {
     let params = {
       filter_2_above_50: "TRUE"
@@ -23,14 +29,22 @@ function App() {
   };
   
   useEffect(() => {
-    getFileList();
+    getFileList();console.log(formNewDeptIsOpen);
   }, );
 
   return (
     <div className="App">
-      <Button>Add department</Button>
+      <div className="header"></div>
+      <div className="application-main">
+      <Button onClick={() => setFormNewDepartment(true)}>Add department</Button>
       <Button>Add employee</Button>
       <DepartmentList />
+      <AvForm>
+        <AvField name='test'>Test</AvField>
+      </AvForm>
+      </div>
+      <div className="footer"></div>
+      <NewEmployeeModalForm formNewDeptIsOpen={formNewDeptIsOpen} setFormNewDepartment={setFormNewDepartment} />
     </div>
   );
 }
