@@ -9,11 +9,12 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import AvForm from 'availity-reactstrap-validation/lib/AvForm';
-import NewEmployeeModalForm from './components/NewEmployeeModalForm';
+import NewDepartmentModalForm from './components/NewDepartmentModalForm';
 
 function App() {
 
   const [formNewDeptIsOpen, setFormNewDepartment] = useState(false);
+  const [formNewEmployeeIsOpen, setFormNewEmployee] = useState(false);
 
   const getFileList = () => {
     let params = {
@@ -44,7 +45,7 @@ function App() {
       </AvForm>
       </div>
       <div className="footer"></div>
-      <NewEmployeeModalForm formNewDeptIsOpen={formNewDeptIsOpen} setFormNewDepartment={setFormNewDepartment} />
+      <NewDepartmentModalForm formNewDeptIsOpen={formNewDeptIsOpen} setFormNewDepartment={setFormNewDepartment} />
     </div>
   );
 }
