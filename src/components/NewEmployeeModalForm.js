@@ -4,21 +4,21 @@ import React, { useEffect, useState } from 'react';
 import { Button, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { Modal } from "reactstrap";
 
-const NewEmployeeModalForm = ({formNewEmployeeIsOpen, setFormNewEmployee, setUpdateDepartmentList}) => {
+const NewEmployeeModalForm = ({departmentList, formNewEmployeeIsOpen, setFormNewEmployee, setUpdateDepartmentList}) => {
 
     const [employeeName, setEmployeeName] = useState();
     const [salary, setSalary] = useState();
     const [department, setDepartment] = useState();
-    const [departmentList, setDepartmentList] = useState([])
+    //const [departmentList, setDepartmentList] = useState([])
 
-    const getDepartmentList = () => {
+    /* const getDepartmentList = () => {
         Axios({
             url: 'https://hr.dotsforthings.com/api/get_department_list.php',
             method: 'POST'
         }).then((response) => {
             setDepartmentList(response.data.data);
         });
-    };
+    }; */
 
     useEffect(() => {console.log(departmentList);}, [departmentList])
 
@@ -56,9 +56,9 @@ const NewEmployeeModalForm = ({formNewEmployeeIsOpen, setFormNewEmployee, setUpd
         });
     };
 
-    useEffect(() => {
+    /* useEffect(() => {
         getDepartmentList();
-        }, [])
+        }, []) */
 
     return (
         <Modal isOpen={formNewEmployeeIsOpen} >
