@@ -4,46 +4,81 @@ import React, { useEffect, useState } from 'react';
 import { Button, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { Modal } from "reactstrap";
 
-const NewEmployeeModalForm = ({formNewDeptIsOpen, setFormNewDepartment}) => {
+const NewEmployeeModalForm = ({departmentList, formNewEmployeeIsOpen, setFormNewEmployee, setUpdateDepartmentList}) => {
 
-    const [departmentName, setDepartmentName] = useState();
+    const [employeeName, setEmployeeName] = useState();
+    const [salary, setSalary] = useState();
+    const [department, setDepartment] = useState();
+    //const [departmentList, setDepartmentList] = useState([])
 
-    const handleDepartmentNameChange = (e) => {
-        setDepartmentName(e.target.value);
+    /* const getDepartmentList = () => {
+        Axios({
+            url: 'https://hr.dotsforthings.com/api/get_department_list.php',
+            method: 'POST'
+        }).then((response) => {
+            setDepartmentList(response.data.data);
+        });
+    }; */
+
+    useEffect(() => {console.log(departmentList);}, [departmentList])
+
+    const handleEmployeeNameChange = (e) => {
+        setEmployeeName(e.target.value);
     };
     
-    const handleSubmitNewDepartment = (e, values) => {
+    const handleSalaryChange = (e) => {
+        setSalary(e.target.value);
+    };
+
+    const handleDepartmentChange = (e) => {
+        setDepartment(e.target.value);
+    };
+
+    const handleSubmitNewEmployee = (e) => {
         e.preventDefault();
         let params = {
-            department_name: departmentName
+            employee_name: employeeName,
+            salary: salary,
+            department_id: department
         };
         Axios({
-            url: 'https://hr.dotsforthings.com/api/create_department.php',
+            url: 'https://hr.dotsforthings.com/api/create_employee.php',
             method: 'POST',
             data: params
-        }).then((response) => {
+        }).then((response) => {console.log(response);
             if(response.data.code == 200) {
-                console.log("Success creating new department.");
+                setUpdateDepartmentList(true); //Update department list to refelect new addition
+                console.log("Success creating new employee.");
             } else {
                 console.log("There was a problem with the request.");
             }
-            setFormNewDepartment(false);
+            setFormNewEmployee(false);
         });
     };
 
-    useEffect(() => {
-        }, [])
+    /* useEffect(() => {
+        getDepartmentList();
+        }, []) */
 
     return (
-        <Modal isOpen={formNewDeptIsOpen} >
-            <form onSubmit={(event, values) => {handleSubmitNewDepartment(event, values);}}>
+        <Modal isOpen={formNewEmployeeIsOpen} >
+            <form onSubmit={(event, values) => {handleSubmitNewEmployee(event, values);}}>
                 <ModalHeader>Add new employee</ModalHeader>
                 <ModalBody>
-                    <input name='department_name' placeholder='Department name' onChange={handleDepartmentNameChange}></input>
+                    <input name='employee_name' placeholder='Employee name' onChange={handleEmployeeNameChange}></input> <br/>
+                    <input name='salary' placeholder='Salary' onChange={handleSalaryChange}></input> <br />
+                    <select value={department} onChange={handleDepartmentChange}>
+                        { departmentList?
+                            departmentList.map(item => {
+                            return (<option value={item.department_id}>{item.department_name}</option>);
+                        })
+                    :
+                    <></>}
+                    </select>
                 </ModalBody>
                 <ModalFooter>
-                    <Button type='submit'>Create department</Button>
-                    <Button type='button' onClick={() => {setFormNewDepartment(false)}}>Cancel</Button>
+                    <Button type='submit'>Create employee</Button>
+                    <Button type='button' onClick={() => {setFormNewEmployee(false)}}>Cancel</Button>
                 </ModalFooter>
             </form>
         </Modal>
