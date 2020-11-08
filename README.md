@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# A web app for a human resources department.
+
+## Created for Chessable
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
