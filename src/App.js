@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import AvForm from 'availity-reactstrap-validation/lib/AvForm';
 import NewDepartmentModalForm from './components/NewDepartmentModalForm';
+import NewEmployeeModalForm from './components/NewEmployeeModalForm';
 
 function App() {
 
@@ -30,7 +31,7 @@ function App() {
   };
   
   useEffect(() => {
-    getFileList();console.log(formNewDeptIsOpen);
+    getFileList();
   }, );
 
   return (
@@ -38,7 +39,7 @@ function App() {
       <div className="header"></div>
       <div className="application-main">
       <Button onClick={() => setFormNewDepartment(true)}>Add department</Button>
-      <Button>Add employee</Button>
+      <Button onClick={() => setFormNewEmployee(true)}>Add employee</Button>
       <DepartmentList />
       <AvForm>
         <AvField name='test'>Test</AvField>
@@ -46,6 +47,7 @@ function App() {
       </div>
       <div className="footer"></div>
       <NewDepartmentModalForm formNewDeptIsOpen={formNewDeptIsOpen} setFormNewDepartment={setFormNewDepartment} />
+      <NewEmployeeModalForm formNewEmployeeIsOpen={formNewEmployeeIsOpen} setFormNewEmployee={setFormNewEmployee} />
     </div>
   );
 }
