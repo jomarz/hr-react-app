@@ -11,6 +11,7 @@ import { Button } from 'react-bootstrap';
 import AvForm from 'availity-reactstrap-validation/lib/AvForm';
 import NewDepartmentModalForm from './components/NewDepartmentModalForm';
 import NewEmployeeModalForm from './components/NewEmployeeModalForm';
+import ReportControls from './components/ReportControls';
 
 function App() {
 
@@ -18,10 +19,13 @@ function App() {
   const [formNewDeptIsOpen, setFormNewDepartment] = useState(false);
   const [formNewEmployeeIsOpen, setFormNewEmployee] = useState(false);
   const [updateDepartmentList, setUpdateDepartmentList] = useState(false);
-  const [departmentFilter, setDepartmentFilter] = useState();
+  const [reportType, setReportType] = useState('Department');
+  const [departmentFilter, setDepartmentFilter] = useState('all');
+  const [employeeFilter, setEmployeeFilter] = useState('all')
 
   const getDepartmentList = () => {
     let params = {
+      filter: departmentFilter,
       filter_2_above_50: "FALSE"
     };
     axios({
@@ -51,15 +55,7 @@ function App() {
       <div className="application-main">
       <Button onClick={() => setFormNewDepartment(true)}>Add department</Button>
       <Button onClick={() => setFormNewEmployee(true)}>Add employee</Button>
-      <div>
-        <label>
-          <span>Display </span>
-          <select>
-            <option>All departments</option>
-            <option>Only departments that have more than two employees that earn over 50k</option>
-          </select>
-        </label>
-      </div>
+      <ReportControls reportType={reportType} setReportType={setReportType} departmentFilter={departmentFilter} setDepartmentFilter={setDepartmentFilter} employeeFilter={employeeFilter} setEmployeeFilter={setEmployeeFilter} />
       <DepartmentList departmentList={departmentList} />
       </div>
       <div className="footer"></div>
