@@ -2,12 +2,24 @@ body {
   background-color: #F4F4F4;
 }
 
-.header, .application-main, .footer {
+.application-main, .footer {
   max-width: 900px;
   background-color: #F4F4F4;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   padding: 1rem 2rem;
+}
+
+.header {
+  padding: 26px 39px 0;
+  height: 80px;
+  background-color: #034FDF;
+}
+
+button.btn-primary {
+  background-color: #2c8b5c;
+  border-color: #2c8b5c;
+  color: #fff;
 }
 /*# sourceMappingURL=app.css.map */

@@ -12,6 +12,7 @@ import AvForm from 'availity-reactstrap-validation/lib/AvForm';
 import NewDepartmentModalForm from './components/NewDepartmentModalForm';
 import NewEmployeeModalForm from './components/NewEmployeeModalForm';
 import ReportControls from './components/ReportControls';
+import { Col, Row } from 'reactstrap';
 
 function App() {
 
@@ -51,7 +52,13 @@ function App() {
 
   return (
     <div className="App">
-      <div className="header"></div>
+      <div className="header">
+        <Row>
+          <Col className='xs-4 md-2'>
+            <a className='header-logo'><img src={process.env.PUBLIC_URL + '/assets/img/logo_chessable.svg'}></img></a>
+          </Col>
+        </Row>
+      </div>
       <div className="application-main">
       <Button onClick={() => setFormNewDepartment(true)}>Add department</Button>
       <Button onClick={() => setFormNewEmployee(true)}>Add employee</Button>
