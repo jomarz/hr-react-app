@@ -1,13 +1,30 @@
-body {
-  background-color: #F4F4F4;
+html {
+  font-size: 14px;
 }
 
-.header, .application-main, .footer {
+body {
+  background-color: #F4F4F4;
+  line-height: 1.37rem;
+}
+
+.application-main, .footer {
   max-width: 900px;
   background-color: #F4F4F4;
-  max-width: 1200px;
+  max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
   padding: 1rem 2rem;
+}
+
+.header {
+  padding: 26px 39px 0;
+  height: 80px;
+  background-color: #034FDF;
+}
+
+button.btn-primary {
+  background-color: #2c8b5c;
+  border-color: #2c8b5c;
+  color: #fff;
 }
 /*# sourceMappingURL=app.css.map */
