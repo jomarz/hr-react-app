@@ -51,9 +51,6 @@ function App() {
       <Button onClick={() => setFormNewDepartment(true)}>Add department</Button>
       <Button onClick={() => setFormNewEmployee(true)}>Add employee</Button>
       <DepartmentList departmentList={departmentList} />
-      <AvForm>
-        <AvField name='test'>Test</AvField>
-      </AvForm>
       </div>
       <div className="footer"></div>
       <NewDepartmentModalForm formNewDeptIsOpen={formNewDeptIsOpen} setFormNewDepartment={setFormNewDepartment} setUpdateDepartmentList={setUpdateDepartmentList}/>
