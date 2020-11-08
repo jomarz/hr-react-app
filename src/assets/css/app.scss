@@ -4,8 +4,12 @@ $button_background_color: #2c8b5c;
 $button_color: #fff;
 $logo_url: './assets/img/logo_chessable.svg';
 
+html {
+    font-size: 14px;
+}
 body {
     background-color: $background_color;
+    line-height: 1.37rem;
 }
 .application-main, .footer {
     max-width: 900px;

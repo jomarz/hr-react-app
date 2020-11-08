@@ -8,6 +8,15 @@ const DepartmentList = ({departmentList}) => {
 
     return (
         <>
+        <Card className='report-header d-sm-none d-md-block'>
+            <CardBody>
+                <Row>
+                    <Col className='md-3'>Department</Col>
+                    <Col className='md-3'>Highest salary</Col>
+                    <Col className='md-3'>Number of employees</Col>
+                </Row>
+            </CardBody>
+        </Card>
         {departmentList?
             departmentList.map(item => { return (
                 <Card>
@@ -22,6 +31,9 @@ const DepartmentList = ({departmentList}) => {
                                 :
                                     <text>0.00</text>
                                 }                                
+                            </Col>
+                            <Col className='md-3'>
+                                <p></p>
                             </Col>
                         </Row>
                     </CardBody>
