@@ -33,7 +33,7 @@ const DepartmentList = ({departmentList}) => {
                                 }                                
                             </Col>
                             <Col className='md-3'>
-                                <p></p>
+                                <p>{item.num_employees}</p>
                             </Col>
                         </Row>
                     </CardBody>
