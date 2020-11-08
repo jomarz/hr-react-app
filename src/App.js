@@ -13,6 +13,7 @@ import NewDepartmentModalForm from './components/NewDepartmentModalForm';
 import NewEmployeeModalForm from './components/NewEmployeeModalForm';
 import ReportControls from './components/ReportControls';
 import { Col, Row } from 'reactstrap';
+import BarChart from './components/BarChart';
 
 function App() {
 
@@ -62,6 +63,7 @@ function App() {
       <div className="application-main">
       <Button onClick={() => setFormNewDepartment(true)}>Add department</Button>
       <Button onClick={() => setFormNewEmployee(true)}>Add employee</Button>
+      <BarChart />
       <ReportControls reportType={reportType} setReportType={setReportType} departmentFilter={departmentFilter} setDepartmentFilter={setDepartmentFilter} employeeFilter={employeeFilter} setEmployeeFilter={setEmployeeFilter} setUpdateDepartmentList={setUpdateDepartmentList} />
       <DepartmentList departmentList={departmentList} />
       </div>
