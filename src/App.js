@@ -17,6 +17,7 @@ function App() {
   const [departmentList, setDepartmentList] = useState();
   const [formNewDeptIsOpen, setFormNewDepartment] = useState(false);
   const [formNewEmployeeIsOpen, setFormNewEmployee] = useState(false);
+  const [updateDepartmentList, setUpdateDepartmentList] = useState(false);
 
   const getDepartmentList = () => {
     let params = {
@@ -36,6 +37,13 @@ function App() {
     getDepartmentList();
   }, []);
 
+  useEffect(() => {
+    if(updateDepartmentList) {
+      getDepartmentList();
+      setUpdateDepartmentList(false);
+    }
+  }, [updateDepartmentList]);
+
   return (
     <div className="App">
       <div className="header"></div>
@@ -48,8 +56,8 @@ function App() {
       </AvForm>
       </div>
       <div className="footer"></div>
-      <NewDepartmentModalForm formNewDeptIsOpen={formNewDeptIsOpen} setFormNewDepartment={setFormNewDepartment} />
-      <NewEmployeeModalForm formNewEmployeeIsOpen={formNewEmployeeIsOpen} setFormNewEmployee={setFormNewEmployee} />
+      <NewDepartmentModalForm formNewDeptIsOpen={formNewDeptIsOpen} setFormNewDepartment={setFormNewDepartment} setUpdateDepartmentList={setUpdateDepartmentList}/>
+      <NewEmployeeModalForm formNewEmployeeIsOpen={formNewEmployeeIsOpen} setFormNewEmployee={setFormNewEmployee} setUpdateDepartmentList={setUpdateDepartmentList}/>
     </div>
   );
 }
