@@ -14,25 +14,27 @@ import NewEmployeeModalForm from './components/NewEmployeeModalForm';
 
 function App() {
 
+  const [departmentList, setDepartmentList] = useState();
   const [formNewDeptIsOpen, setFormNewDepartment] = useState(false);
   const [formNewEmployeeIsOpen, setFormNewEmployee] = useState(false);
 
-  const getFileList = () => {
+  const getDepartmentList = () => {
     let params = {
-      filter_2_above_50: "TRUE"
+      filter_2_above_50: "FALSE"
     };
     axios({
         url: 'https://hr.dotsforthings.com/api/get_department_list.php',
         method: 'POST',
         data: params
       }).then((response) => {console.log(response.data);
+        setDepartmentList(response.data.data);
       });
 
   };
   
   useEffect(() => {
-    getFileList();
-  }, );
+    getDepartmentList();
+  }, []);
 
   return (
     <div className="App">
@@ -40,7 +42,7 @@ function App() {
       <div className="application-main">
       <Button onClick={() => setFormNewDepartment(true)}>Add department</Button>
       <Button onClick={() => setFormNewEmployee(true)}>Add employee</Button>
-      <DepartmentList />
+      <DepartmentList departmentList={departmentList} />
       <AvForm>
         <AvField name='test'>Test</AvField>
       </AvForm>
