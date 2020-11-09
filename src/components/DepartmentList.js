@@ -27,9 +27,9 @@ const DepartmentList = ({departmentList}) => {
                             </Col>
                             <Col className='md-3'>
                                 {item.highest_paid_employee != false?
-                                    <text>{item.highest_paid_employee.employee_salary}</text>
+                                    <text>{parseFloat(item.highest_paid_employee.employee_salary).toLocaleString('es')}</text>
                                 :
-                                    <text>0.00</text>
+                                    <text>0</text>
                                 }                                
                             </Col>
                             <Col className='md-3'>
@@ -43,19 +43,6 @@ const DepartmentList = ({departmentList}) => {
             <></>
         }
         </>
-        /* departmentList?
-        departmentList.map(item => {
-            return (
-                <>
-                    <Card>
-                        <Card.Body><h2>List from component</h2></Card.Body>
-                    </Card>
-                    <Button>Hola</Button>
-                </>
-            );
-        });
-        :
-        <></> */
     );
 };
 
