@@ -2,6 +2,7 @@ $background_color: #F4F4F4;
 $header_color: #034FDF;
 $button_background_color: #2c8b5c;
 $button_color: #fff;
+$report_header_color: #2c8b5c;
 $logo_url: './assets/img/logo_chessable.svg';
 
 html {
@@ -12,14 +13,20 @@ body {
     line-height: 1.37rem;
 }
 .application-main, .footer {
-    max-width: 900px;
     background-color: $background_color;
     max-width: 1100px;
     margin-left: auto;
     margin-right: auto;
     padding: 1rem 2rem;
 }
+.application-main {
+    margin-top: 80px;
+}
 .header {
+    position: fixed;
+    top: 0;
+    z-index: 1001;
+    width: 100%;
     padding: 26px 39px 0;
     height: 80px;
     background-color: $header_color;
@@ -43,4 +50,12 @@ button.btn-primary {
 }
 input, select {
     margin: 10px 0 10px;
+}
+.report-header {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 79px;
+    z-index: 999;
+    background-color: $report_header_color;
+    color: #fff;
 }
