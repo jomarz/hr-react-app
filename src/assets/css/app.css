@@ -46,6 +46,10 @@ button.btn-primary {
   border-radius: 8px;
 }
 
+.report-list .card {
+  border-radius: 0;
+}
+
 .side-content .card {
   margin: 28px 0 28px;
 }
@@ -59,7 +63,11 @@ input, select {
   position: sticky;
   top: 79px;
   z-index: 999;
-  background-color: #2c8b5c;
-  color: #fff;
+  background-color: #fff;
+  color: #868686;
+}
+
+.number-cell {
+  text-align: right;
 }
 /*# sourceMappingURL=app.css.map */
