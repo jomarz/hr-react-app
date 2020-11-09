@@ -7,13 +7,14 @@ const DepartmentList = ({departmentList}) => {
     useEffect(()=> console.log(departmentList),[])
 
     return (
-        <>
+        <div className='report-list'>
         <Card className='report-header d-sm-none d-md-block'>
             <CardBody>
                 <Row>
-                    <Col className='md-3'>Department</Col>
-                    <Col className='md-3'>Highest salary</Col>
-                    <Col className='md-3'>Number of employees</Col>
+                    <Col className='md-4'>Department</Col>
+                    <Col className='md-2 number-cell'>Highest salary</Col>
+                    <Col className='md-2 number-cell'>Number of employees</Col>
+                    <Col className='md-2 number-cell'>Total salaries</Col>
                 </Row>
             </CardBody>
         </Card>
@@ -22,18 +23,25 @@ const DepartmentList = ({departmentList}) => {
                 <Card>
                     <CardBody>
                         <Row>
-                            <Col className='md-3'>
+                            <Col className='md-4'>
                                 <h6>{item.department_name}</h6>
                             </Col>
-                            <Col className='md-3'>
+                            <Col className='md-2 number-cell'>
                                 {item.highest_paid_employee != false?
-                                    <text>{item.highest_paid_employee.employee_salary}</text>
+                                    <p>{parseFloat(item.highest_paid_employee.employee_salary).toLocaleString('es')}</p>
                                 :
-                                    <text>0.00</text>
+                                    <p>0</p>
                                 }                                
                             </Col>
-                            <Col className='md-3'>
+                            <Col className='md-3 number-cell'>
                                 <p>{item.num_employees}</p>
+                            </Col>
+                            <Col className='md-3 number-cell'>
+                                {item.total_salary != false?
+                                    <p>{parseFloat(item.total_salary).toLocaleString('es')}</p>
+                                    :
+                                    <p>0</p>
+                                }
                             </Col>
                         </Row>
                     </CardBody>
@@ -42,20 +50,7 @@ const DepartmentList = ({departmentList}) => {
         :
             <></>
         }
-        </>
-        /* departmentList?
-        departmentList.map(item => {
-            return (
-                <>
-                    <Card>
-                        <Card.Body><h2>List from component</h2></Card.Body>
-                    </Card>
-                    <Button>Hola</Button>
-                </>
-            );
-        });
-        :
-        <></> */
+        </div>
     );
 };
 
