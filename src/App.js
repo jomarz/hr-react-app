@@ -64,15 +64,15 @@ function App() {
       </div>
       <div className="application-main">
         <Row>
-          <Col className='col-md-8'>
+          <Col className='col-md-7'>
             <ReportControls reportType={reportType} setReportType={setReportType} departmentFilter={departmentFilter} setDepartmentFilter={setDepartmentFilter} employeeFilter={employeeFilter} setEmployeeFilter={setEmployeeFilter} setUpdateDepartmentList={setUpdateDepartmentList} />
             <DepartmentList departmentList={departmentList} />
           </Col>
-          <Col className='col-md-4'>
+          <Col className='col-md-5 side-content'>
             <Button className='add-new' onClick={() => setFormNewDepartment(true)}>Add department</Button>
             <Button className='add-new' onClick={() => setFormNewEmployee(true)}>Add employee</Button>
-            <BarChart />
-            <PieChartDepartmentSalaries />
+            <Card><BarChart /></Card>
+            <Card><PieChartDepartmentSalaries /></Card>
             </Col>
         </Row>
       </div>

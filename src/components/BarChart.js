@@ -33,7 +33,7 @@ const BarChart = () => {
         data: {
           labels: histogramData.categories,
           datasets: [{
-            label: 'Number of employees within salary range',
+            label: 'Number of employees by salary range',
             data: histogramData.values,
             backgroundColor: '#112233'
           }]

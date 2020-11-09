@@ -34,7 +34,19 @@ const PieChartDepartmentSalaries = () => {
           datasets: [{
             label: 'Number of employees within salary range',
             data: chartData.values,
-            backgroundColor: '#112233'
+            backgroundColor: [
+                '#034FDF',
+                '#2C8B5C',
+                '#ffd880',
+                '#f6744c',
+                '#000000',
+                'yellow',
+                'gray',
+                '#112233',
+                '#112233',
+                '#215233',
+                '#112233'
+            ]
           }]
         }
       });}
