@@ -26,7 +26,7 @@ function App() {
   const [formNewEmployeeIsOpen, setFormNewEmployee] = useState(false);
   const [updateDepartmentList, setUpdateDepartmentList] = useState(false);
   const [updateEmployeeList, setUpdateEmployeeList] = useState(false);
-  const [reportType, setReportType] = useState('employee');
+  const [reportType, setReportType] = useState('department');
   const [departmentFilter, setDepartmentFilter] = useState('all');
   const [employeeFilter, setEmployeeFilter] = useState('all')
 
