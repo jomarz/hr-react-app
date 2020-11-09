@@ -12,7 +12,7 @@ import AvForm from 'availity-reactstrap-validation/lib/AvForm';
 import NewDepartmentModalForm from './components/NewDepartmentModalForm';
 import NewEmployeeModalForm from './components/NewEmployeeModalForm';
 import ReportControls from './components/ReportControls';
-import { Col, Row } from 'reactstrap';
+import { Card, Col, Row } from 'reactstrap';
 import BarChart from './components/BarChart';
 import Axios from 'axios';
 
@@ -62,11 +62,17 @@ function App() {
         </Row>
       </div>
       <div className="application-main">
-      <Button onClick={() => setFormNewDepartment(true)}>Add department</Button>
-      <Button onClick={() => setFormNewEmployee(true)}>Add employee</Button>
-      <BarChart />
-      <ReportControls reportType={reportType} setReportType={setReportType} departmentFilter={departmentFilter} setDepartmentFilter={setDepartmentFilter} employeeFilter={employeeFilter} setEmployeeFilter={setEmployeeFilter} setUpdateDepartmentList={setUpdateDepartmentList} />
-      <DepartmentList departmentList={departmentList} />
+        <Row>
+          <Col className='col-md-8'>
+            <ReportControls reportType={reportType} setReportType={setReportType} departmentFilter={departmentFilter} setDepartmentFilter={setDepartmentFilter} employeeFilter={employeeFilter} setEmployeeFilter={setEmployeeFilter} setUpdateDepartmentList={setUpdateDepartmentList} />
+            <DepartmentList departmentList={departmentList} />
+          </Col>
+          <Col className='col-md-4'>
+            <Button className='add-new' onClick={() => setFormNewDepartment(true)}>Add department</Button>
+            <Button className='add-new' onClick={() => setFormNewEmployee(true)}>Add employee</Button>
+            <BarChart />
+            </Col>
+        </Row>
       </div>
       <div className="footer"></div>
       <NewDepartmentModalForm formNewDeptIsOpen={formNewDeptIsOpen} setFormNewDepartment={setFormNewDepartment} setUpdateDepartmentList={setUpdateDepartmentList}/>

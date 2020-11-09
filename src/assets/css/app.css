@@ -27,4 +27,9 @@ button.btn-primary {
   border-color: #2c8b5c;
   color: #fff;
 }
+
+.add-new {
+  display: block;
+  width: 100%;
+}
 /*# sourceMappingURL=app.css.map */
