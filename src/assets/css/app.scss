@@ -5,8 +5,12 @@ $button_color: #fff;
 $report_header_color: #fff;
 $logo_url: './assets/img/logo_chessable.svg';
 
-html {
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+html, body {
     font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
 }
 body {
     background-color: $background_color;
@@ -32,6 +36,7 @@ body {
     background-color: $header_color;
 }
 button.btn-primary {
+    font-family: 'Montserrat', sans-serif;
     background-color: $button_background_color;
     border-color: $button_background_color;
     color: $button_color;
