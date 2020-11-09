@@ -15,6 +15,7 @@ import ReportControls from './components/ReportControls';
 import { Card, Col, Row } from 'reactstrap';
 import BarChart from './components/BarChart';
 import Axios from 'axios';
+import PieChartDepartmentSalaries from './components/PieChartDepartmentSalaries';
 
 function App() {
 
@@ -71,6 +72,7 @@ function App() {
             <Button className='add-new' onClick={() => setFormNewDepartment(true)}>Add department</Button>
             <Button className='add-new' onClick={() => setFormNewEmployee(true)}>Add employee</Button>
             <BarChart />
+            <PieChartDepartmentSalaries />
             </Col>
         </Row>
       </div>

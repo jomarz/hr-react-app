@@ -31,10 +31,10 @@ const BarChart = () => {
       let myChart = new Chart(chartRef.current, {
         type: 'bar',
         data: {
-          labels: histogramData.categories,//['A', 'B', 'C', 'D'],
+          labels: histogramData.categories,
           datasets: [{
             label: 'Number of employees within salary range',
-            data: histogramData.values,//[10, 20, 30, 40],
+            data: histogramData.values,
             backgroundColor: '#112233'
           }]
         }
