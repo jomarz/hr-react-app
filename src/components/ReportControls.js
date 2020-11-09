@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { Col, Row } from 'reactstrap';
 
 const ReportControls = ({reportType, setReportType, departmentFilter, setDepartmentFilter, employeeFilter, setEmployeeFilter, setUpdateDepartmentList}) => {
+
+    const handleReportTypeChange = (e) => {
+      setReportType(e.target.value);
+    };
 
     const handleDepartmentFilterChange = (e) => {
         setDepartmentFilter(e.target.value); console.log(e.target.value);
@@ -9,6 +14,21 @@ const ReportControls = ({reportType, setReportType, departmentFilter, setDepartm
 
     return (
         <div>
+          <Row>
+            <Col className='col-2'>
+              <h5 className='reportTitle'>Report: </h5>
+            </Col>
+            <Col>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="reportType" id="departmentRadio" value="department" checked={reportType=='department'} onChange={handleReportTypeChange}/>
+                <label class="form-check-label" for="departmentRadio">Departments</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="reportType" id="employeeRadio" value="employee" checked={reportType=='employee'} onChange={handleReportTypeChange}/>
+                <label class="form-check-label" for="employeeRadio">Employees</label>
+              </div>
+            </Col>
+          </Row>
           <label>
             <span>Display </span>
             <select value={departmentFilter} onChange={handleDepartmentFilterChange}>

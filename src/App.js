@@ -16,14 +16,17 @@ import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
 import BarChart from './components/BarChart';
 import Axios from 'axios';
 import PieChartDepartmentSalaries from './components/PieChartDepartmentSalaries';
+import EmployeeList from './components/EmployeeList';
 
 function App() {
 
   const [departmentList, setDepartmentList] = useState();
+  const [employeeList, setEmployeeList] = useState();
   const [formNewDeptIsOpen, setFormNewDepartment] = useState(false);
   const [formNewEmployeeIsOpen, setFormNewEmployee] = useState(false);
   const [updateDepartmentList, setUpdateDepartmentList] = useState(false);
-  const [reportType, setReportType] = useState('Department');
+  const [updateEmployeeList, setUpdateEmployeeList] = useState(false);
+  const [reportType, setReportType] = useState('employee');
   const [departmentFilter, setDepartmentFilter] = useState('all');
   const [employeeFilter, setEmployeeFilter] = useState('all')
 
@@ -39,11 +42,24 @@ function App() {
       }).then((response) => {console.log(response.data);
         setDepartmentList(response.data.data);
       });
-
   };
   
+  const getEmployeeList = () => {
+    let params = {
+      filter: employeeFilter,
+    };
+    axios({
+        url: 'https://hr.dotsforthings.com/api/get_employee_list.php',
+        method: 'POST',
+        data: params
+      }).then((response) => {console.log(response.data);
+        setEmployeeList(response.data.data);
+      });
+  };
+
   useEffect(() => {
     getDepartmentList();
+    getEmployeeList();
   }, []);
 
   useEffect(() => {
@@ -65,8 +81,15 @@ function App() {
       <div className="application-main">
         <Row>
           <Col className='col-md-7'>
-            <ReportControls reportType={reportType} setReportType={setReportType} departmentFilter={departmentFilter} setDepartmentFilter={setDepartmentFilter} employeeFilter={employeeFilter} setEmployeeFilter={setEmployeeFilter} setUpdateDepartmentList={setUpdateDepartmentList} />
-            <DepartmentList departmentList={departmentList} />
+            <ReportControls reportType={reportType} setReportType={setReportType} departmentFilter={departmentFilter} setDepartmentFilter={setDepartmentFilter} employeeFilter={employeeFilter} setEmployeeFilter={setEmployeeFilter} setUpdateDepartmentList={setUpdateDepartmentList} />            
+            {reportType=='department'?
+                <DepartmentList departmentList={departmentList} />
+              :
+                reportType=='employee'?
+                  <EmployeeList employeeList={employeeList} />
+                :
+                  <></>
+            }
           </Col>
           <Col className='col-md-5 side-content'>
             <Button className='add-new' onClick={() => setFormNewDepartment(true)}>Add department</Button>
