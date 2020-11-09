@@ -33,10 +33,22 @@ const BarChart = () => {
         data: {
           labels: histogramData.categories,
           datasets: [{
-            label: 'Number of employees by salary range',
+            //label: 'Number of employees by salary range',
             data: histogramData.values,
-            backgroundColor: '#112233'
+            backgroundColor: '#034FDF'
           }]
+        },
+        options: {
+          legend: {
+              display: false
+          },
+          tooltips: {
+              callbacks: {
+                 label: function(tooltipItem) {
+                        return tooltipItem.yLabel;
+                 }
+              }
+          }
         }
       });}
   }, [histogramData]);
