@@ -37,7 +37,11 @@ const DepartmentList = ({departmentList}) => {
                                 <p>{item.num_employees}</p>
                             </Col>
                             <Col className='md-3 number-cell'>
-                                <p>{item.num_employees}</p>
+                                {item.total_salary != false?
+                                    <p>{parseFloat(item.total_salary).toLocaleString('es')}</p>
+                                    :
+                                    <p>0</p>
+                                }
                             </Col>
                         </Row>
                     </CardBody>
