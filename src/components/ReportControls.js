@@ -29,6 +29,7 @@ const ReportControls = ({reportType, setReportType, departmentFilter, setDepartm
               </div>
             </Col>
           </Row>
+          {reportType=='department'?
           <label>
             <span>Display </span>
             <select value={departmentFilter} onChange={handleDepartmentFilterChange}>
@@ -36,6 +37,9 @@ const ReportControls = ({reportType, setReportType, departmentFilter, setDepartm
               <option value='filter_2_above_50'>Only departments that have more than two employees that earn over 50k</option>
             </select>
           </label>
+          :
+          <></>
+          }
         </div>
     );
 }
