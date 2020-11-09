@@ -1,7 +1,55 @@
-import React from 'react';
-import Chart from 'chart.js'
+import React, { useEffect, useRef, useState } from 'react';
+import Chart from 'chart.js';
+import Axios from 'axios';
 
-class BarChart extends React.Component {
+const BarChart = () => {
+
+  const[histogramData, setHistogramData] = useState();
+
+  const chartRef = useRef();
+
+
+  const getSalaryHistogram = () => {
+    let params = {
+      department_id: ''
+    };
+    Axios({
+      url: 'https://hr.dotsforthings.com/api/get_salary_histogram.php',
+      method: 'POST'
+    }).then((response) => {
+      console.log(response);
+      setHistogramData(response.data.data);
+    });
+  };
+
+  useEffect(() => {
+    getSalaryHistogram();
+  },[])
+
+  useEffect(() => {
+    if(histogramData) {
+      let myChart = new Chart(chartRef.current, {
+        type: 'bar',
+        data: {
+          labels: histogramData.categories,//['A', 'B', 'C', 'D'],
+          datasets: [{
+            label: 'Number of employees within salary range',
+            data: histogramData.values,//[10, 20, 30, 40],
+            backgroundColor: '#112233'
+          }]
+        }
+      });}
+  }, [histogramData]);
+
+  return (
+    <canvas ref={chartRef} />
+  );
+
+};
+
+export default BarChart;
+
+/* class BarChart extends React.Component {
     constructor(props) {
         super(props);
         this.chartRef = React.createRef();
@@ -26,6 +74,6 @@ class BarChart extends React.Component {
         <canvas ref={this.chartRef} />
         );
     }
-}
+} 
 
-export default BarChart;
+export default BarChart;*/

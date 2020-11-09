@@ -14,6 +14,7 @@ import NewEmployeeModalForm from './components/NewEmployeeModalForm';
 import ReportControls from './components/ReportControls';
 import { Col, Row } from 'reactstrap';
 import BarChart from './components/BarChart';
+import Axios from 'axios';
 
 function App() {
 
