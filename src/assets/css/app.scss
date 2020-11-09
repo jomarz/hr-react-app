@@ -1,5 +1,5 @@
 $background_color: #F4F4F4;
-$header_color: #034FDF;
+$chessable_blue: #034FDF;
 $button_background_color: #2c8b5c;
 $button_color: #fff;
 $report_header_color: #fff;
@@ -33,7 +33,7 @@ body {
     width: 100%;
     padding: 26px 39px 0;
     height: 80px;
-    background-color: $header_color;
+    background-color: $chessable_blue;
 }
 button.btn-primary {
     font-family: 'Montserrat', sans-serif;
@@ -52,6 +52,9 @@ button.btn-primary {
 }
 .report-list .card {
     border-radius: 0;
+}
+.info-icon {
+    color: $chessable_blue;
 }
 .side-content .card {
     margin: 20px 0 20px;

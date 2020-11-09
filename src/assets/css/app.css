@@ -54,6 +54,10 @@ button.btn-primary {
   border-radius: 0;
 }
 
+.info-icon {
+  color: #034FDF;
+}
+
 .side-content .card {
   margin: 20px 0 20px;
 }
