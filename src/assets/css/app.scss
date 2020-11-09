@@ -53,6 +53,12 @@ button.btn-primary {
 .report-list .card {
     border-radius: 0;
 }
+.report-list .card-body {
+    padding: 1.1rem 1.25rem;
+    p, h6 {
+        margin-bottom: 0;
+    }
+}
 .info-icon {
     color: $chessable_blue;
 }
@@ -69,6 +75,7 @@ input, select {
     z-index: 999;
     background-color: $report_header_color;
     color: #868686;
+    border-bottom: 1px solid black;
 }
 .number-cell {
     text-align: right;

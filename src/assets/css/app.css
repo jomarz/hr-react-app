@@ -54,6 +54,14 @@ button.btn-primary {
   border-radius: 0;
 }
 
+.report-list .card-body {
+  padding: 1.1rem 1.25rem;
+}
+
+.report-list .card-body p, .report-list .card-body h6 {
+  margin-bottom: 0;
+}
+
 .info-icon {
   color: #034FDF;
 }
@@ -73,6 +81,7 @@ input, select {
   z-index: 999;
   background-color: #fff;
   color: #868686;
+  border-bottom: 1px solid black;
 }
 
 .number-cell {
