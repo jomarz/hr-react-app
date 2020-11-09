@@ -95,11 +95,11 @@ function App() {
             <Button className='add-new' onClick={() => setFormNewDepartment(true)}>Add department</Button>
             <Button className='add-new' onClick={() => setFormNewEmployee(true)}>Add employee</Button>
             <Card className='chart-card'>
-              <CardHeader><h6>Number of employees by salary range (entire company)</h6></CardHeader>
+              <CardHeader><h6><b>Number of employees by salary range (entire company)</b></h6></CardHeader>
               <CardBody><BarChart /></CardBody>
             </Card>
             <Card className='chart-card'>
-              <CardHeader><h6>Total salaries by department (entire company)</h6></CardHeader>
+              <CardHeader><h6><b>Total salaries by department (entire company)</b></h6></CardHeader>
               <CardBody><PieChartDepartmentSalaries /></CardBody>              
             </Card>
             </Col>
