@@ -12,7 +12,7 @@ import AvForm from 'availity-reactstrap-validation/lib/AvForm';
 import NewDepartmentModalForm from './components/NewDepartmentModalForm';
 import NewEmployeeModalForm from './components/NewEmployeeModalForm';
 import ReportControls from './components/ReportControls';
-import { Card, Col, Row } from 'reactstrap';
+import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
 import BarChart from './components/BarChart';
 import Axios from 'axios';
 import PieChartDepartmentSalaries from './components/PieChartDepartmentSalaries';
@@ -71,8 +71,14 @@ function App() {
           <Col className='col-md-5 side-content'>
             <Button className='add-new' onClick={() => setFormNewDepartment(true)}>Add department</Button>
             <Button className='add-new' onClick={() => setFormNewEmployee(true)}>Add employee</Button>
-            <Card><BarChart /></Card>
-            <Card><PieChartDepartmentSalaries /></Card>
+            <Card className='chart-card'>
+              <CardHeader><h6>Number of employees by salary range (entire company)</h6></CardHeader>
+              <CardBody><BarChart /></CardBody>
+            </Card>
+            <Card className='chart-card'>
+              <CardHeader><h6>Total salaries by department (entire company)</h6></CardHeader>
+              <CardBody><PieChartDepartmentSalaries /></CardBody>              
+            </Card>
             </Col>
         </Row>
       </div>
