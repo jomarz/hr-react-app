@@ -14,12 +14,12 @@ const EmployeeList = ({employeeList}) => {
 
     return (
         <div className='report-list'>
-        <Card className='report-header d-sm-none d-md-block'>
+        <Card className='report-header'>
             <CardBody>
                 <Row>
-                    <Col className='md-6'>Name</Col>
-                    <Col className='md-4'>Department</Col>
-                    <Col className='md-2 number-cell'>Salary</Col>
+                    <Col className='col-md-5'>Name</Col>
+                    <Col className='col-md-4'>Department</Col>
+                    <Col className='col-md-3 number-cell'>Salary</Col>
                 </Row>
             </CardBody>
         </Card>
@@ -28,13 +28,13 @@ const EmployeeList = ({employeeList}) => {
                 <Card>
                     <CardBody>
                         <Row>
-                            <Col className='md-6'>
+                            <Col className='col-md-5'>
                                 <h6>{item.employee_name}</h6>
                             </Col>
-                            <Col className='md-4'>
+                            <Col className='col-md-4'>
                                 <p>{item.department_name}</p>
                             </Col>
-                            <Col className='md-2 number-cell'>
+                            <Col className='col-md-3 number-cell'>
                                 {/* <p>{parseFloat(item.employee_salary).toLocaleString('es')}</p> */}
                                 <p>{formatNumber(item.employee_salary)}</p>
                             </Col>

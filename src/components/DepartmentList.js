@@ -14,13 +14,13 @@ const DepartmentList = ({departmentList}) => {
 
     return (
         <div className='report-list'>
-        <Card className='report-header d-sm-none d-md-block'>
+        <Card className='report-header'>
             <CardBody>
                 <Row>
-                    <Col className='md-4'>Department</Col>
-                    <Col className='md-2 number-cell'>Highest salary</Col>
-                    <Col className='md-2 number-cell'>Number of employees</Col>
-                    <Col className='md-2 number-cell'>Total salaries</Col>
+                    <Col className='col-md-4'>Department</Col>
+                    <Col className='col-md-2 pr-0 number-cell'>Highest salary</Col>
+                    <Col className='col-md-3 number-cell'>Number of employees</Col>
+                    <Col className='col-md-3 number-cell'>Total salaries</Col>
                 </Row>
             </CardBody>
         </Card>
@@ -29,10 +29,10 @@ const DepartmentList = ({departmentList}) => {
                 <Card>
                     <CardBody>
                         <Row>
-                            <Col className='md-4'>
+                            <Col className='col-md-4'>
                                 <h6>{item.department_name}</h6>
                             </Col>
-                            <Col className='md-2 number-cell'>
+                            <Col className='col-md-2 pr-0 number-cell'>
                                 {item.highest_paid_employee != false?
                                     <p>
                                         {/* <span className='info-icon'>
@@ -47,10 +47,10 @@ const DepartmentList = ({departmentList}) => {
                                     <p>0</p>
                                 }                                
                             </Col>
-                            <Col className='md-3 number-cell'>
+                            <Col className='col-md-3 number-cell'>
                                 <p>{item.num_employees}</p>
                             </Col>
-                            <Col className='md-3 number-cell'>
+                            <Col className='col-md-3 number-cell'>
                                 {item.total_salary != false?
                                     <p>{formatNumber(item.total_salary)}</p>
                                     :
