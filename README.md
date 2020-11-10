@@ -1,6 +1,13 @@
 # A web app for a human resources department.
 
-## Created for Chessable
+## Created for Chessable as requested with the following instructions
+
+*********************
+Write a simple HR app. There should be departments with names and employees with names and salaries. As a minimum it should be possible to add departments and employees, and to run the following reports:
+1. Show all departments along with the highest salary within each department. A department with no employees should show 0 as the highest salary.
+2. List just those departments that have more than two employees that earn over 50k.
+Please use PHP & MySQL to implement this. Do not use an ORM or CMS but feel free to use any other frameworks or libraries as you see fit.
+*********************
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

@@ -8,6 +8,12 @@ const PieChartDepartmentSalaries = () => {
 
   const chartRef = useRef();
 
+  function formatNumber(num) {
+    num = parseFloat(num);
+    num = Math.floor(num);
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+  }
+
   const getChartData = () => {
     let params = {
       department_id: ''
@@ -33,19 +39,22 @@ const PieChartDepartmentSalaries = () => {
           labels: chartData.categories,
           datasets: [{
             label: 'Number of employees within salary range',
-            data: chartData.values,
+            data: chartData.values.map(value => {return(formatNumber(value));}),
             backgroundColor: [
-                '#034FDF',
-                '#2C8B5C',
-                '#ffd880',
-                '#f6744c',
-                '#000000',
-                'yellow',
-                'gray',
-                '#112233',
-                '#112233',
-                '#215233',
-                '#112233'
+                '#ff6384',
+                '#ff9f40',
+                '#4bc0c0',
+                '#ffcd56',
+                '#9966ff',
+                '#c9cbcf',
+                '#535353',
+                '#ff6384',
+                '#ff9f40',
+                '#4bc0c0',
+                '#ffcd56',
+                '#9966ff',
+                '#c9cbcf',
+                '#535353',
             ]
           }]
         }
