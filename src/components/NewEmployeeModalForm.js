@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { Modal } from "reactstrap";
 
-const NewEmployeeModalForm = ({departmentList, formNewEmployeeIsOpen, setFormNewEmployee, setUpdateEmployeeList, setShowSuccessModal, setSuccessMessage}) => {
+const NewEmployeeModalForm = ({departmentList, formNewEmployeeIsOpen, setFormNewEmployee, setUpdateEmployeeList, setUpdateDepartmentList, setShowSuccessModal, setSuccessMessage}) => {
 
     const [employeeName, setEmployeeName] = useState();
     const [salary, setSalary] = useState();
@@ -41,8 +41,9 @@ const NewEmployeeModalForm = ({departmentList, formNewEmployeeIsOpen, setFormNew
             data: params
         }).then((response) => {console.log(response);
             if(response.data.code == 200) {
-                setUpdateEmployeeList(true); //Update department list to refelect new addition
-                setSuccessMessage('Success creating new employee!');
+                setUpdateEmployeeList(true); //Update employee list to refelect new addition
+                setUpdateDepartmentList(true); //Update department list too!
+                setSuccessMessage('Success! New employee created.');
                 setShowSuccessModal(true);
                 console.log("Success creating new employee.");
                 setFormNewEmployee(false);

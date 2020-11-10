@@ -124,7 +124,7 @@ function App() {
       </div>
       <div className="footer"></div>
       <NewDepartmentModalForm formNewDeptIsOpen={formNewDeptIsOpen} setFormNewDepartment={setFormNewDepartment} setUpdateDepartmentList={setUpdateDepartmentList} setShowSuccessModal={setShowSuccessModal} setSuccessMessage={setSuccessMessage}/>
-      <NewEmployeeModalForm departmentList={departmentList} formNewEmployeeIsOpen={formNewEmployeeIsOpen} setFormNewEmployee={setFormNewEmployee} setUpdateEmployeeList={setUpdateEmployeeList} setShowSuccessModal={setShowSuccessModal} setSuccessMessage={setSuccessMessage}/>
+      <NewEmployeeModalForm departmentList={departmentList} formNewEmployeeIsOpen={formNewEmployeeIsOpen} setFormNewEmployee={setFormNewEmployee} setUpdateEmployeeList={setUpdateEmployeeList} setUpdateDepartmentList={setUpdateDepartmentList} setShowSuccessModal={setShowSuccessModal} setSuccessMessage={setSuccessMessage}/>
       <SuccessModal show={showSuccessModal} setShow={setShowSuccessModal} message={successMessage}/>
       {/* <Modal isOpen={showAlertNewEmployee} className='modal-alert-success'>
         <ModalHeader>Success creating new employee!</ModalHeader>
