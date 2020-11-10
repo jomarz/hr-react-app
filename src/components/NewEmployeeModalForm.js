@@ -65,8 +65,8 @@ const NewEmployeeModalForm = ({departmentList, formNewEmployeeIsOpen, setFormNew
             <form onSubmit={(event, values) => {handleSubmitNewEmployee(event, values);}}>
                 <ModalHeader>Add new employee</ModalHeader>
                 <ModalBody>
-                    <input name='employee_name' placeholder='Employee name' onChange={handleEmployeeNameChange}></input> <br/>
-                    <input name='salary' placeholder='Salary' onChange={handleSalaryChange}></input> <br />
+                    <input name='employee_name' required placeholder='Employee name' onChange={handleEmployeeNameChange}></input> <br/>
+                    <input name='salary' required type='number' placeholder='Salary' onChange={handleSalaryChange}></input> <br />
                     <select value={department} onChange={handleDepartmentChange}>
                         { departmentList?
                             departmentList.map(item => {
