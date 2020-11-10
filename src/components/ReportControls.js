@@ -15,7 +15,7 @@ const ReportControls = ({reportType, setReportType, departmentFilter, setDepartm
     return (
         <div>
           <Row>
-            <Col className='col-2'>
+            <Col className='col-4 col-md-2'>
               <h5 className='reportTitle'>Report: </h5>
             </Col>
             <Col>
@@ -31,8 +31,7 @@ const ReportControls = ({reportType, setReportType, departmentFilter, setDepartm
           </Row>
           {reportType=='department'?
           <label>
-            <span>Show </span>
-            <select value={departmentFilter} onChange={handleDepartmentFilterChange}>
+            <select className='form-control' value={departmentFilter} onChange={handleDepartmentFilterChange}>
               <option value='all'>All departments</option>
               <option value='filter_2_above_50'>Only departments that have more than two employees that earn over 50k</option>
             </select>

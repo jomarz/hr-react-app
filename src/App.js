@@ -17,7 +17,7 @@ import BarChart from './components/BarChart';
 import Axios from 'axios';
 import PieChartDepartmentSalaries from './components/PieChartDepartmentSalaries';
 import EmployeeList from './components/EmployeeList';
-import SuccessModal from './components/ReportControls copy';
+import SuccessModal from './components/SuccessModal';
 
 function App() {
 
@@ -89,6 +89,11 @@ function App() {
         </Row>
       </div>
       <div className="application-main">
+        
+        <div className='d-md-none d-block'>
+        <Button className='add-new' onClick={() => setFormNewDepartment(true)}>Add department</Button>
+        <Button className='add-new' onClick={() => setFormNewEmployee(true)}>Add employee</Button>
+        </div>
         <Row>
           <Col className='col-md-7'>
             <ReportControls reportType={reportType} setReportType={setReportType} departmentFilter={departmentFilter} setDepartmentFilter={setDepartmentFilter} employeeFilter={employeeFilter} setEmployeeFilter={setEmployeeFilter} setUpdateDepartmentList={setUpdateDepartmentList} />            
@@ -102,8 +107,10 @@ function App() {
             }
           </Col>
           <Col className='col-md-5 side-content'>
+            <div className='d-md-block d-none'>
             <Button className='add-new' onClick={() => setFormNewDepartment(true)}>Add department</Button>
             <Button className='add-new' onClick={() => setFormNewEmployee(true)}>Add employee</Button>
+            </div>
             <Card className='chart-card'>
               <CardHeader><h6><b>Number of employees by salary range (entire company)</b></h6></CardHeader>
               <CardBody><BarChart /></CardBody>
