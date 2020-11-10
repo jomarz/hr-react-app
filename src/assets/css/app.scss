@@ -1,12 +1,17 @@
 $background_color: #F4F4F4;
-$header_color: #034FDF;
+$chessable_blue: #034FDF;
 $button_background_color: #2c8b5c;
+$button_hover_background_color: #3a7457;
 $button_color: #fff;
 $report_header_color: #fff;
 $logo_url: './assets/img/logo_chessable.svg';
 
-html {
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+html, body {
     font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
 }
 body {
     background-color: $background_color;
@@ -29,11 +34,20 @@ body {
     width: 100%;
     padding: 26px 39px 0;
     height: 80px;
-    background-color: $header_color;
+    background-color: $chessable_blue;
 }
 button.btn-primary {
+    font-family: 'Montserrat', sans-serif;
     background-color: $button_background_color;
     border-color: $button_background_color;
+    color: $button_color;
+}
+button {
+    border-radius: 7px;
+}
+button.btn-primary:hover, button.btn-primary:focus, button.btn-primary:active, .btn-primary:not(:disabled):not(.disabled):active {
+    background-color: $button_hover_background_color;
+    border-color: $button_hover_background_color;
     color: $button_color;
 }
 .add-new {
@@ -42,14 +56,36 @@ button.btn-primary {
     margin-top: 5px;
     margin-bottom: 10px;
 }
+.modal-alert-success {
+    border: none;
+    .modal-header, .modal-body, .modal-footer {
+        background-color: #d4edda;
+        color: #155724;
+    }
+    .modal-header {
+        border-bottom: none;
+    }
+    .modal-footer {
+        border-top: none;
+    }
+} 
 .card {
     border-radius: 8px;
 }
 .report-list .card {
     border-radius: 0;
 }
+.report-list .card-body {
+    padding: 1.1rem 1.25rem;
+    p, h6 {
+        margin-bottom: 0;
+    }
+}
+.info-icon {
+    color: $chessable_blue;
+}
 .side-content .card {
-    margin: 28px 0 28px;
+    margin: 20px 0 20px;
 }
 input, select {
     margin: 10px 0 10px;
@@ -61,6 +97,7 @@ input, select {
     z-index: 999;
     background-color: $report_header_color;
     color: #868686;
+    border-bottom: 1px solid black;
 }
 .number-cell {
     text-align: right;
