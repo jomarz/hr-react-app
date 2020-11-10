@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { Modal } from "reactstrap";
 
-const NewDepartmentModalForm = ({formNewDeptIsOpen, setFormNewDepartment, setUpdateDepartmentList}) => {
+const NewDepartmentModalForm = ({formNewDeptIsOpen, setFormNewDepartment, setUpdateDepartmentList, setShowSuccessModal, setSuccessMessage}) => {
 
     const [departmentName, setDepartmentName] = useState();
     const [sendingRequest, setSendingRequest] = useState(false);
@@ -28,6 +28,8 @@ const NewDepartmentModalForm = ({formNewDeptIsOpen, setFormNewDepartment, setUpd
         }).then((response) => {
             if(response.data.code == 200) {
                 setUpdateDepartmentList(true); //Update department list to refelect new addition
+                setSuccessMessage('Success creating new department!');
+                setShowSuccessModal(true);
                 console.log("Success creating new department.");
                 setFormNewDepartment(false);
             } else if(response.data.code == 411) {

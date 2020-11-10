@@ -17,6 +17,7 @@ import BarChart from './components/BarChart';
 import Axios from 'axios';
 import PieChartDepartmentSalaries from './components/PieChartDepartmentSalaries';
 import EmployeeList from './components/EmployeeList';
+import SuccessModal from './components/ReportControls copy';
 
 function App() {
 
@@ -28,9 +29,9 @@ function App() {
   const [updateEmployeeList, setUpdateEmployeeList] = useState(false);
   const [reportType, setReportType] = useState('department');
   const [departmentFilter, setDepartmentFilter] = useState('all');
-  const [employeeFilter, setEmployeeFilter] = useState('all')
-  const [showAlertNewEmployee, setShowAlertNewEmployee] = useState(true);
-  const [showAlertNewDepartment, setShowAlertNewDepartment] = useState(false);
+  const [employeeFilter, setEmployeeFilter] = useState('all');
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [successMessage, setSuccessMessage] = useState();
 
   const getDepartmentList = () => {
     let params = {
@@ -115,14 +116,15 @@ function App() {
         </Row>
       </div>
       <div className="footer"></div>
-      <NewDepartmentModalForm formNewDeptIsOpen={formNewDeptIsOpen} setFormNewDepartment={setFormNewDepartment} setUpdateDepartmentList={setUpdateDepartmentList}/>
-      <NewEmployeeModalForm departmentList={departmentList} formNewEmployeeIsOpen={formNewEmployeeIsOpen} setFormNewEmployee={setFormNewEmployee} setUpdateEmployeeList={setUpdateEmployeeList} setShowAlertNewEmployee={setShowAlertNewEmployee}/>
-      <Modal isOpen={showAlertNewEmployee} className='modal-alert-success'>
+      <NewDepartmentModalForm formNewDeptIsOpen={formNewDeptIsOpen} setFormNewDepartment={setFormNewDepartment} setUpdateDepartmentList={setUpdateDepartmentList} setShowSuccessModal={setShowSuccessModal} setSuccessMessage={setSuccessMessage}/>
+      <NewEmployeeModalForm departmentList={departmentList} formNewEmployeeIsOpen={formNewEmployeeIsOpen} setFormNewEmployee={setFormNewEmployee} setUpdateEmployeeList={setUpdateEmployeeList} setShowSuccessModal={setShowSuccessModal} setSuccessMessage={setSuccessMessage}/>
+      <SuccessModal show={showSuccessModal} setShow={setShowSuccessModal} message={successMessage}/>
+      {/* <Modal isOpen={showAlertNewEmployee} className='modal-alert-success'>
         <ModalHeader>Success creating new employee!</ModalHeader>
         <ModalFooter>
         <button type="button" class="btn btn-secondary" onClick={()=>{setShowAlertNewEmployee(false)}}>Close</button>
         </ModalFooter>
-      </Modal>
+      </Modal> */}
     </div>
   );
 }

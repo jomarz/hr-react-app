@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { Modal } from "reactstrap";
 
-const NewEmployeeModalForm = ({departmentList, formNewEmployeeIsOpen, setFormNewEmployee, setUpdateEmployeeList, setShowAlertNewEmployee}) => {
+const NewEmployeeModalForm = ({departmentList, formNewEmployeeIsOpen, setFormNewEmployee, setUpdateEmployeeList, setShowSuccessModal, setSuccessMessage}) => {
 
     const [employeeName, setEmployeeName] = useState();
     const [salary, setSalary] = useState();
@@ -38,12 +38,13 @@ const NewEmployeeModalForm = ({departmentList, formNewEmployeeIsOpen, setFormNew
         }).then((response) => {console.log(response);
             if(response.data.code == 200) {
                 setUpdateEmployeeList(true); //Update department list to refelect new addition
-                setShowAlertNewEmployee(true);
+                setSuccessMessage('Success creating new employee!');
+                setShowSuccessModal(true);
                 console.log("Success creating new employee.");
+                setFormNewEmployee(false);
             } else {
                 console.log("There was a problem with the request.");
             }
-            setFormNewEmployee(false);
         });
     };
 
@@ -68,7 +69,7 @@ const NewEmployeeModalForm = ({departmentList, formNewEmployeeIsOpen, setFormNew
                     </select>
                 </ModalBody>
                 <ModalFooter>
-                    <Button type='submit'>Create employee</Button>
+                    <Button type='submit' className='btn-primary'>Create employee</Button>
                     <Button type='button' onClick={() => {setFormNewEmployee(false)}}>Cancel</Button>
                 </ModalFooter>
             </form>

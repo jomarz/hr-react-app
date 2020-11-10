@@ -31,7 +31,7 @@ const BarChart = () => {
       let myChart = new Chart(chartRef.current, {
         type: 'bar',
         data: {
-          labels: histogramData.categories.map(item => {return(item/1000)+'ks';}),
+          labels: histogramData.categories.map(item => {if(item<10000){return('<10Ks')} else{return(item/1000)+'Ks';}}),
           datasets: [{
             //label: 'Number of employees by salary range',
             data: histogramData.values,
