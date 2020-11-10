@@ -33,7 +33,7 @@ const ReportControls = ({reportType, setReportType, departmentFilter, setDepartm
           <label>
             <select className='form-control' value={departmentFilter} onChange={handleDepartmentFilterChange}>
               <option value='all'>All departments</option>
-              <option value='filter_2_above_50'>Only departments that have more than two employees that earn over 50k</option>
+              <option value='filter_2_above_50'>Only departments that have more than two employees that earn over 50K</option>
             </select>
           </label>
           :
