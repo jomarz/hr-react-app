@@ -63,17 +63,27 @@ const NewEmployeeModalForm = ({departmentList, formNewEmployeeIsOpen, setFormNew
             <form onSubmit={(event, values) => {handleSubmitNewEmployee(event, values);}}>
                 <ModalHeader>Add new employee</ModalHeader>
                 <ModalBody>
-                    <input name='employee_name' required placeholder='Employee name' onChange={handleEmployeeNameChange}></input> <br/>
-                    <input name='salary' required type='number' min='1' placeholder='Salary' onChange={handleSalaryChange}></input> <br />
-                    <select value={department} required onChange={handleDepartmentChange}>
-                        { departmentList?
-                            departmentList.map(item => {
-                            return (<option value={item.department_id}>{item.department_name}</option>);
-                            setDepartment();
-                        })
-                    :
-                    <></>}
-                    </select>
+                    <div className='form-group'>
+                        <label for='name_input'>Name</label>
+                        <input name='employee_name' className='form-control' id='name_input' required placeholder='Enter employee name' onChange={handleEmployeeNameChange}></input>
+                    </div>
+                    <div className='form-group'>
+                        <label for='salary_input'>Salary</label>
+                        <input name='salary' className='form-control' id='salary_input' required type='number' min='1' placeholder="Enter employee's salary" onChange={handleSalaryChange}></input>
+                    </div>
+                    <div className='form-group'>
+                        <label for='department_input'>Department</label>
+                        <select value={department} className='form-control' id='department_input' required onChange={handleDepartmentChange}>
+                            { departmentList?
+                                departmentList.map(item => {
+                                return (<option value={item.department_id}>{item.department_name}</option>);
+                                setDepartment();
+                            })
+                            :
+                            <></>
+                            }
+                        </select>
+                    </div>
                 </ModalBody>
                 <ModalFooter>
                     {sendingRequest?
