@@ -8,9 +8,11 @@ const NewDepartmentModalForm = ({formNewDeptIsOpen, setFormNewDepartment, setUpd
 
     const [departmentName, setDepartmentName] = useState();
     const [sendingRequest, setSendingRequest] = useState(false);
+    const [duplicateNameError, setDuplicateNameError] = useState(false);
 
     const handleDepartmentNameChange = (e) => {
         setDepartmentName(e.target.value);
+        setDuplicateNameError(false);
     };
     
     const handleSubmitNewDepartment = (e, values) => {
@@ -27,10 +29,12 @@ const NewDepartmentModalForm = ({formNewDeptIsOpen, setFormNewDepartment, setUpd
             if(response.data.code == 200) {
                 setUpdateDepartmentList(true); //Update department list to refelect new addition
                 console.log("Success creating new department.");
+                setFormNewDepartment(false);
+            } else if(response.data.code == 411) {
+                setDuplicateNameError(true);
             } else {
                 console.log("There was a problem with the request.");
             }
-            setFormNewDepartment(false);
             setSendingRequest(false);
         });
     };
@@ -43,7 +47,15 @@ const NewDepartmentModalForm = ({formNewDeptIsOpen, setFormNewDepartment, setUpd
             <form onSubmit={(event, values) => {handleSubmitNewDepartment(event, values);}}>
                 <ModalHeader>Add new department</ModalHeader>
                 <ModalBody>
-                    <input name='department_name' placeholder='Department name' required onChange={handleDepartmentNameChange}></input>
+                    <div class="form-group">
+                        <label for="department_name_input">Department name</label>
+                        <input name='department_name' class="form-control" id='department_name_input' placeholder='Enter department name' required onChange={handleDepartmentNameChange}></input>
+                        {duplicateNameError?
+                        <small id="name_help" class="form-text text-danger" color='red'>A department with this name already exists</small>
+                        :
+                        <></>
+                        }
+                    </div>
                 </ModalBody>
                 <ModalFooter>
                     {sendingRequest?
@@ -54,7 +66,7 @@ const NewDepartmentModalForm = ({formNewDeptIsOpen, setFormNewDepartment, setUpd
                     :
                     <>
                     <Button type='submit' className='btn-primary'>Create department</Button>
-                    <Button type='button' onClick={() => {setFormNewDepartment(false)}}>Cancel</Button>
+                    <Button type='button' onClick={() => {setFormNewDepartment(false); setDuplicateNameError(false);}}>Cancel</Button>
                     </>
                     }
                 </ModalFooter>
