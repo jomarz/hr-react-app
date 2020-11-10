@@ -54,7 +54,7 @@ const NewDepartmentModalForm = ({formNewDeptIsOpen, setFormNewDepartment, setUpd
                     :
                     <>
                     <Button type='submit' className='btn-primary'>Create department</Button>
-                    <Button type='button'  onClick={() => {setFormNewDepartment(false)}}>Cancel</Button>
+                    <Button type='button' onClick={() => {setFormNewDepartment(false)}}>Cancel</Button>
                     </>
                     }
                 </ModalFooter>

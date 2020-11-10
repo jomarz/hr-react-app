@@ -45,7 +45,7 @@ button.btn-primary {
 button {
     border-radius: 7px;
 }
-button.btn-primary:hover {
+button.btn-primary:hover, button.btn-primary:focus, button.btn-primary:active, .btn-primary:not(:disabled):not(.disabled):active {
     background-color: $button_hover_background_color;
     border-color: $button_hover_background_color;
     color: $button_color;
