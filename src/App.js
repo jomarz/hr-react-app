@@ -12,7 +12,7 @@ import AvForm from 'availity-reactstrap-validation/lib/AvForm';
 import NewDepartmentModalForm from './components/NewDepartmentModalForm';
 import NewEmployeeModalForm from './components/NewEmployeeModalForm';
 import ReportControls from './components/ReportControls';
-import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
+import { Alert, Card, CardBody, CardHeader, Col, Modal, ModalFooter, ModalHeader, Row } from 'reactstrap';
 import BarChart from './components/BarChart';
 import Axios from 'axios';
 import PieChartDepartmentSalaries from './components/PieChartDepartmentSalaries';
@@ -29,6 +29,8 @@ function App() {
   const [reportType, setReportType] = useState('department');
   const [departmentFilter, setDepartmentFilter] = useState('all');
   const [employeeFilter, setEmployeeFilter] = useState('all')
+  const [showAlertNewEmployee, setShowAlertNewEmployee] = useState(true);
+  const [showAlertNewDepartment, setShowAlertNewDepartment] = useState(false);
 
   const getDepartmentList = () => {
     let params = {
@@ -68,6 +70,13 @@ function App() {
       setUpdateDepartmentList(false);
     }
   }, [updateDepartmentList]);
+  
+  useEffect(() => {
+    if(updateEmployeeList) {
+      getEmployeeList();
+      setUpdateEmployeeList(false);
+    }
+  }, [updateEmployeeList]);
 
   return (
     <div className="App">
@@ -107,7 +116,13 @@ function App() {
       </div>
       <div className="footer"></div>
       <NewDepartmentModalForm formNewDeptIsOpen={formNewDeptIsOpen} setFormNewDepartment={setFormNewDepartment} setUpdateDepartmentList={setUpdateDepartmentList}/>
-      <NewEmployeeModalForm departmentList={departmentList} formNewEmployeeIsOpen={formNewEmployeeIsOpen} setFormNewEmployee={setFormNewEmployee} setUpdateDepartmentList={setUpdateDepartmentList}/>
+      <NewEmployeeModalForm departmentList={departmentList} formNewEmployeeIsOpen={formNewEmployeeIsOpen} setFormNewEmployee={setFormNewEmployee} setUpdateEmployeeList={setUpdateEmployeeList} setShowAlertNewEmployee={setShowAlertNewEmployee}/>
+      <Modal isOpen={showAlertNewEmployee} className='modal-alert-success'>
+        <ModalHeader>Success creating new employee!</ModalHeader>
+        <ModalFooter>
+        <button type="button" class="btn btn-secondary" onClick={()=>{setShowAlertNewEmployee(false)}}>Close</button>
+        </ModalFooter>
+      </Modal>
     </div>
   );
 }

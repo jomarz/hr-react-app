@@ -4,21 +4,11 @@ import React, { useEffect, useState } from 'react';
 import { Button, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { Modal } from "reactstrap";
 
-const NewEmployeeModalForm = ({departmentList, formNewEmployeeIsOpen, setFormNewEmployee, setUpdateDepartmentList}) => {
+const NewEmployeeModalForm = ({departmentList, formNewEmployeeIsOpen, setFormNewEmployee, setUpdateEmployeeList, setShowAlertNewEmployee}) => {
 
     const [employeeName, setEmployeeName] = useState();
     const [salary, setSalary] = useState();
     const [department, setDepartment] = useState();
-    //const [departmentList, setDepartmentList] = useState([])
-
-    /* const getDepartmentList = () => {
-        Axios({
-            url: 'https://hr.dotsforthings.com/api/get_department_list.php',
-            method: 'POST'
-        }).then((response) => {
-            setDepartmentList(response.data.data);
-        });
-    }; */
 
     useEffect(() => {console.log(departmentList);}, [departmentList])
 
@@ -47,7 +37,8 @@ const NewEmployeeModalForm = ({departmentList, formNewEmployeeIsOpen, setFormNew
             data: params
         }).then((response) => {console.log(response);
             if(response.data.code == 200) {
-                setUpdateDepartmentList(true); //Update department list to refelect new addition
+                setUpdateEmployeeList(true); //Update department list to refelect new addition
+                setShowAlertNewEmployee(true);
                 console.log("Success creating new employee.");
             } else {
                 console.log("There was a problem with the request.");

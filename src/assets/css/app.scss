@@ -56,6 +56,19 @@ button.btn-primary:hover, button.btn-primary:focus, button.btn-primary:active, .
     margin-top: 5px;
     margin-bottom: 10px;
 }
+.modal-alert-success {
+    border: none;
+    .modal-header, .modal-body, .modal-footer {
+        background-color: #d4edda;
+        color: #155724;
+    }
+    .modal-header {
+        border-bottom: none;
+    }
+    .modal-footer {
+        border-top: none;
+    }
+} 
 .card {
     border-radius: 8px;
 }
