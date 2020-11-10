@@ -82,11 +82,16 @@ function App() {
   return (
     <div className="App">
       <div className="header">
-        <Row>
-          <Col className='xs-4 md-2'>
-            <a className='header-logo'><img src={process.env.PUBLIC_URL + '/assets/img/logo_chessable.svg'}></img></a>
-          </Col>
-        </Row>
+        <div className='logo-col'>
+          <a className='header-logo'><img src={process.env.PUBLIC_URL + '/assets/img/logo_chessable.svg'}></img></a>
+          {/* <div className='divider small'></div>
+          <div className='title-sm'><h1 className='title-text'>HR app</h1></div> */}
+        </div>
+        <div className='header-title'>
+          <a className='header-logo-small'><img src={process.env.PUBLIC_URL + '/assets/img/logo_chessable.svg'}></img></a>
+          <div className='divider small'></div>
+          <h1 className='title-text'>HR app</h1>
+        </div>
       </div>
       <div className="application-main">
         
