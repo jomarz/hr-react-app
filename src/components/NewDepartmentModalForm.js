@@ -28,7 +28,7 @@ const NewDepartmentModalForm = ({formNewDeptIsOpen, setFormNewDepartment, setUpd
         }).then((response) => {
             if(response.data.code == 200) {
                 setUpdateDepartmentList(true); //Update department list to refelect new addition
-                setSuccessMessage('Success creating new department!');
+                setSuccessMessage('Success! New department created.');
                 setShowSuccessModal(true);
                 console.log("Success creating new department.");
                 setFormNewDepartment(false);
