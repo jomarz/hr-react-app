@@ -62,7 +62,7 @@ const NewDepartmentModalForm = ({formNewDeptIsOpen, setFormNewDepartment, setUpd
                 <ModalFooter>
                     {sendingRequest?
                     <>
-                    <Button type='submit' disabled><span className='spinner-border spinner-border-sm'></span>&nbsp;Create department</Button>
+                    <Button type='submit' disabled className='btn-primary'><span className='spinner-border spinner-border-sm'></span>&nbsp;Create department</Button>
                     <Button type='button' disabled>Cancel</Button>
                     </>
                     :

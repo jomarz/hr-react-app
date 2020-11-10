@@ -9,8 +9,11 @@ const NewEmployeeModalForm = ({departmentList, formNewEmployeeIsOpen, setFormNew
     const [employeeName, setEmployeeName] = useState();
     const [salary, setSalary] = useState();
     const [department, setDepartment] = useState();
+    const [sendingRequest, setSendingRequest] = useState(false);
 
-    useEffect(() => {console.log(departmentList);}, [departmentList])
+    useEffect(() => {
+        if(departmentList){setDepartment(departmentList[0].department_id);} 
+    }, [departmentList])
 
     const handleEmployeeNameChange = (e) => {
         setEmployeeName(e.target.value);
@@ -31,6 +34,7 @@ const NewEmployeeModalForm = ({departmentList, formNewEmployeeIsOpen, setFormNew
             salary: salary,
             department_id: department
         };
+        setSendingRequest(true);
         Axios({
             url: 'https://hr.dotsforthings.com/api/create_employee.php',
             method: 'POST',
@@ -45,6 +49,7 @@ const NewEmployeeModalForm = ({departmentList, formNewEmployeeIsOpen, setFormNew
             } else {
                 console.log("There was a problem with the request.");
             }
+            setSendingRequest(false);
         });
     };
 
@@ -58,19 +63,29 @@ const NewEmployeeModalForm = ({departmentList, formNewEmployeeIsOpen, setFormNew
                 <ModalHeader>Add new employee</ModalHeader>
                 <ModalBody>
                     <input name='employee_name' required placeholder='Employee name' onChange={handleEmployeeNameChange}></input> <br/>
-                    <input name='salary' required type='number' placeholder='Salary' onChange={handleSalaryChange}></input> <br />
-                    <select value={department} onChange={handleDepartmentChange}>
+                    <input name='salary' required type='number' min='1' placeholder='Salary' onChange={handleSalaryChange}></input> <br />
+                    <select value={department} required onChange={handleDepartmentChange}>
                         { departmentList?
                             departmentList.map(item => {
                             return (<option value={item.department_id}>{item.department_name}</option>);
+                            setDepartment();
                         })
                     :
                     <></>}
                     </select>
                 </ModalBody>
                 <ModalFooter>
+                    {sendingRequest?
+                    <>
+                    <Button type='submit' disabled className='btn-primary'><span className='spinner-border spinner-border-sm'></span>&nbsp;Create employee</Button>
+                    <Button type='button' disabled>Cancel</Button>
+                    </>
+                    :
+                    <>
                     <Button type='submit' className='btn-primary'>Create employee</Button>
                     <Button type='button' onClick={() => {setFormNewEmployee(false)}}>Cancel</Button>
+                    </>
+                    }
                 </ModalFooter>
             </form>
         </Modal>
