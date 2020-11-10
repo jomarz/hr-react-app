@@ -39,6 +39,16 @@ button.btn-primary {
   color: #fff;
 }
 
+button {
+  border-radius: 7px;
+}
+
+button.btn-primary:hover {
+  background-color: #3a7457;
+  border-color: #3a7457;
+  color: #fff;
+}
+
 .add-new {
   display: block;
   width: 100%;

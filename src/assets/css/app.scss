@@ -1,6 +1,7 @@
 $background_color: #F4F4F4;
 $chessable_blue: #034FDF;
 $button_background_color: #2c8b5c;
+$button_hover_background_color: #3a7457;
 $button_color: #fff;
 $report_header_color: #fff;
 $logo_url: './assets/img/logo_chessable.svg';
@@ -39,6 +40,14 @@ button.btn-primary {
     font-family: 'Montserrat', sans-serif;
     background-color: $button_background_color;
     border-color: $button_background_color;
+    color: $button_color;
+}
+button {
+    border-radius: 7px;
+}
+button.btn-primary:hover {
+    background-color: $button_hover_background_color;
+    border-color: $button_hover_background_color;
     color: $button_color;
 }
 .add-new {

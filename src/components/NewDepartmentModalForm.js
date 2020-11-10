@@ -7,6 +7,7 @@ import { Modal } from "reactstrap";
 const NewDepartmentModalForm = ({formNewDeptIsOpen, setFormNewDepartment, setUpdateDepartmentList}) => {
 
     const [departmentName, setDepartmentName] = useState();
+    const [sendingRequest, setSendingRequest] = useState(false);
 
     const handleDepartmentNameChange = (e) => {
         setDepartmentName(e.target.value);
@@ -17,6 +18,7 @@ const NewDepartmentModalForm = ({formNewDeptIsOpen, setFormNewDepartment, setUpd
         let params = {
             department_name: departmentName
         };
+        setSendingRequest(true);
         Axios({
             url: 'https://hr.dotsforthings.com/api/create_department.php',
             method: 'POST',
@@ -29,6 +31,7 @@ const NewDepartmentModalForm = ({formNewDeptIsOpen, setFormNewDepartment, setUpd
                 console.log("There was a problem with the request.");
             }
             setFormNewDepartment(false);
+            setSendingRequest(false);
         });
     };
 
@@ -43,8 +46,17 @@ const NewDepartmentModalForm = ({formNewDeptIsOpen, setFormNewDepartment, setUpd
                     <input name='department_name' placeholder='Department name' onChange={handleDepartmentNameChange}></input>
                 </ModalBody>
                 <ModalFooter>
-                    <Button type='submit'>Create department</Button>
-                    <Button type='button' onClick={() => {setFormNewDepartment(false)}}>Cancel</Button>
+                    {sendingRequest?
+                    <>
+                    <Button type='submit' disabled><span className='spinner-border spinner-border-sm'></span>&nbsp;Create department</Button>
+                    <Button type='button' disabled>Cancel</Button>
+                    </>
+                    :
+                    <>
+                    <Button type='submit' className='btn-primary'>Create department</Button>
+                    <Button type='button'  onClick={() => {setFormNewDepartment(false)}}>Cancel</Button>
+                    </>
+                    }
                 </ModalFooter>
             </form>
         </Modal>
