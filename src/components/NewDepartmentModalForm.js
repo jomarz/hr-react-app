@@ -49,11 +49,11 @@ const NewDepartmentModalForm = ({formNewDeptIsOpen, setFormNewDepartment, setUpd
             <form onSubmit={(event, values) => {handleSubmitNewDepartment(event, values);}}>
                 <ModalHeader>Add new department</ModalHeader>
                 <ModalBody>
-                    <div class="form-group">
+                    <div className="form-group">
                         <label for="department_name_input">Department name</label>
-                        <input name='department_name' class="form-control" id='department_name_input' placeholder='Enter department name' required onChange={handleDepartmentNameChange}></input>
+                        <input name='department_name' className="form-control" id='department_name_input' placeholder='Enter department name' required onChange={handleDepartmentNameChange}></input>
                         {duplicateNameError?
-                        <small id="name_help" class="form-text text-danger" color='red'>A department with this name already exists</small>
+                        <small id="name_help" className="form-text text-danger" color='red'>A department with this name already exists</small>
                         :
                         <></>
                         }
